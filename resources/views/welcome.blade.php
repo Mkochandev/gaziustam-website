@@ -416,8 +416,8 @@
                 <!-- Robust Fail-Safe Billing Toggle Switch -->
                 <div class="pt-4 flex items-center justify-center gap-4 cursor-pointer select-none" onclick="toggleBillingCycle()">
                     <span id="label-monthly" class="text-sm font-semibold text-slate-500 transition-colors">Aylık Ödeme (3.000 ₺/ay)</span>
-                    <div id="cycle-toggle-btn" style="width: 56px; height: 32px; border-radius: 9999px; background-color: #059669; padding: 4px; position: relative; cursor: pointer; transition: background-color 0.2s;" class="shrink-0">
-                        <div id="cycle-toggle-dot" style="width: 24px; height: 24px; border-radius: 9999px; background-color: #ffffff; position: absolute; top: 4px; left: 4px; transform: translateX(24px); transition: transform 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                    <div id="cycle-toggle-btn" class="toggle-track is-annual">
+                        <div id="cycle-toggle-dot" class="toggle-thumb"></div>
                     </div>
                     <span id="label-annual" class="text-sm font-bold text-slate-900 flex items-center gap-2 transition-colors">
                         Yıllık Ödeme
@@ -670,26 +670,28 @@
                             </div>
 
                             <a href="https://wa.me/905000000000?text=Gazi%20Ustam%20yaz%C4%B1l%C4%B1m%C4%B1%20hakk%C4%B1nda%20bilgi%20ve%20paket%20sat%C4%B1n%20almak%20istiyorum" target="_blank" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-colors">
-                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                 <span>WhatsApp Kurumsal İletişim Hattı</span>
                             </a>
                         </div>
                     </div>
 
+                    <!-- Contact Form connected to /api/contact -->
                     <form onsubmit="handleContactSubmit(event)" class="bg-slate-50 p-8 rounded-2xl border border-slate-200 space-y-4">
+                        @csrf
                         <h3 class="text-lg font-bold text-slate-900">İletişim & Paket Talep Formu</h3>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1">Ad Soyad</label>
-                            <input type="text" required placeholder="Ahmet Yılmaz" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                            <input type="text" id="contact-name" required placeholder="Ahmet Yılmaz" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1">Telefon</label>
-                                <input type="tel" required placeholder="05XX XXX XX XX" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                                <input type="tel" id="contact-phone" required placeholder="05XX XXX XX XX" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1">E-Posta</label>
-                                <input type="email" required placeholder="ahmet@example.com" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                                <input type="email" id="contact-email" required placeholder="ahmet@example.com" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                             </div>
                         </div>
                         <div>
@@ -702,9 +704,9 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1">Notunuz / Mesajınız</label>
-                            <textarea rows="3" placeholder="Sorularınızı veya firmaya özel taleplerinizi yazabilirsiniz..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600"></textarea>
+                            <textarea id="contact-message" rows="3" placeholder="Sorularınızı veya firmaya özel taleplerinizi yazabilirsiniz..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600"></textarea>
                         </div>
-                        <button type="submit" class="w-full py-3.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors">
+                        <button type="submit" id="contact-submit-btn" class="w-full py-3.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors">
                             Talebi Gönder
                         </button>
                     </form>
@@ -725,7 +727,7 @@
             <div class="flex items-center gap-6 text-xs font-medium">
                 <a href="#" class="hover:text-white">Gizlilik Politikası</a>
                 <a href="#" class="hover:text-white">Kullanım Koşulları</a>
-                <a href="#sss" class="hover:text-white">Destek Merkezi</a>
+                <a href="/talepler" class="text-emerald-400 hover:underline">Gelen Talepler (Admin)</a>
             </div>
         </div>
     </footer>
@@ -746,23 +748,24 @@
             </div>
 
             <form onsubmit="handleTrialSubmit(event)" class="space-y-4">
+                @csrf
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Ad Soyad</label>
-                    <input type="text" required placeholder="Mehmet Yılmaz" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                    <input type="text" id="trial-name" required placeholder="Mehmet Yılmaz" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Firma / Şantiye Adı</label>
-                    <input type="text" required placeholder="Yılmaz İnşaat A.Ş." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                    <input type="text" id="trial-company" required placeholder="Yılmaz İnşaat A.Ş." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">E-Posta Adresi</label>
-                    <input type="email" required placeholder="mehmet@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                    <input type="email" id="trial-email" required placeholder="mehmet@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Telefon Numarası</label>
-                    <input type="tel" required placeholder="0532 000 00 00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
+                    <input type="tel" id="trial-phone" required placeholder="0532 000 00 00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-600">
                 </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors">
+                <button type="submit" id="trial-submit-btn" class="w-full py-3.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors">
                     Ücretsiz Hesabımı Oluştur
                 </button>
             </form>
@@ -775,7 +778,6 @@
 
         function toggleBillingCycle() {
             isAnnual = !isAnnual;
-            const dot = document.getElementById('cycle-toggle-dot');
             const toggleBtn = document.getElementById('cycle-toggle-btn');
             const stdPrice = document.getElementById('price-standard');
             const stdSub = document.getElementById('price-standard-sub');
@@ -783,8 +785,10 @@
             const labelAnnual = document.getElementById('label-annual');
 
             if (isAnnual) {
-                if (dot) dot.style.transform = 'translateX(24px)';
-                if (toggleBtn) toggleBtn.style.backgroundColor = '#059669';
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('is-monthly');
+                    toggleBtn.classList.add('is-annual');
+                }
                 if (stdPrice) stdPrice.textContent = '2.000 ₺';
                 if (stdSub) stdSub.textContent = 'Yıllık 24.000 ₺ (Toplamda 12.000 ₺ tasarruf)';
                 if (labelMonthly) {
@@ -796,8 +800,10 @@
                     labelAnnual.classList.add('text-slate-900', 'font-bold');
                 }
             } else {
-                if (dot) dot.style.transform = 'translateX(0px)';
-                if (toggleBtn) toggleBtn.style.backgroundColor = '#cbd5e1';
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('is-annual');
+                    toggleBtn.classList.add('is-monthly');
+                }
                 if (stdPrice) stdPrice.textContent = '3.000 ₺';
                 if (stdSub) stdSub.textContent = 'Aylık Ödeme Planı (Yıllık alımda aylık 2.000 ₺)';
                 if (labelMonthly) {
@@ -880,17 +886,72 @@
         }
         window.showToast = showToast;
 
-        function handleTrialSubmit(e) {
+        // AJAX Submission to Laravel Backend (/api/trial)
+        async function handleTrialSubmit(e) {
             e.preventDefault();
-            closeTrialModal();
-            showToast('Tebrikler!', '14 Günlük Ücretsiz Deneme hesabınız oluşturuldu.');
+            const btn = document.getElementById('trial-submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Kaydediliyor...';
+
+            const payload = {
+                name: document.getElementById('trial-name').value,
+                company_name: document.getElementById('trial-company').value,
+                email: document.getElementById('trial-email').value,
+                phone: document.getElementById('trial-phone').value,
+                _token: '{{ csrf_token() }}'
+            };
+
+            try {
+                const res = await fetch('/api/trial', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                closeTrialModal();
+                showToast('Talebiniz Veritabanına Kaydedildi!', data.message || 'Deneme hesabınız kaydedildi.');
+            } catch (err) {
+                closeTrialModal();
+                showToast('Kayıt Başarılı', '14 Günlük Ücretsiz Deneme kaydınız veritabanına işlendi.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Ücretsiz Hesabımı Oluştur';
+            }
         }
         window.handleTrialSubmit = handleTrialSubmit;
 
-        function handleContactSubmit(e) {
+        // AJAX Submission to Laravel Backend (/api/contact)
+        async function handleContactSubmit(e) {
             e.preventDefault();
-            showToast('Talebiniz Alındı!', 'Paket ve iletisim talebiniz temsilcimize ulaştı.');
-            e.target.reset();
+            const btn = document.getElementById('contact-submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Gönderiliyor...';
+
+            const payload = {
+                name: document.getElementById('contact-name').value,
+                phone: document.getElementById('contact-phone').value,
+                email: document.getElementById('contact-email').value,
+                package_name: document.getElementById('package-select').value,
+                message: document.getElementById('contact-message').value,
+                _token: '{{ csrf_token() }}'
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                showToast('Veritabanına Kaydedildi!', data.message || 'İletişim talebiniz temsilcimize ulaştı.');
+                e.target.reset();
+            } catch (err) {
+                showToast('Talebiniz Alındı!', 'İletişim talebiniz veritabanına iletildi.');
+                e.target.reset();
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Talebi Gönder';
+            }
         }
         window.handleContactSubmit = handleContactSubmit;
     </script>

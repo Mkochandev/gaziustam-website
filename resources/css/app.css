@@ -39,43 +39,46 @@ body {
     box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
 }
 
-.corp-card-featured {
+.corp-card-popular {
     background: #ffffff;
     border: 2px solid #059669;
-    box-shadow: 0 12px 30px -5px rgba(5, 150, 105, 0.12);
+    box-shadow: 0 12px 30px -5px rgba(5, 150, 105, 0.15);
 }
 
-/* Corporate Buttons */
-.btn-primary {
+/* Custom Fail-Safe Toggle Switch */
+.toggle-track {
+    width: 56px;
+    height: 32px;
+    border-radius: 9999px;
     background-color: #059669;
-    color: #ffffff;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    flex-shrink: 0;
+    display: inline-block;
 }
 
-.btn-primary:hover {
-    background-color: #047857;
-    box-shadow: 0 4px 14px 0 rgba(5, 150, 105, 0.3);
+.toggle-track.is-monthly {
+    background-color: #cbd5e1;
 }
 
-.btn-outline {
+.toggle-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
     background-color: #ffffff;
-    color: #0f172a;
-    border: 1px solid #cbd5e1;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    pointer-events: none;
 }
 
-.btn-outline:hover {
-    background-color: #f8fafc;
-    border-color: #94a3b8;
-    color: #0284c7;
+.toggle-track.is-annual .toggle-thumb {
+    left: 28px;
 }
 
-/* Tab Active State */
-.corp-tab.active {
-    background-color: #ffffff;
-    color: #059669;
-    border-color: #059669;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.toggle-track.is-monthly .toggle-thumb {
+    left: 4px;
 }
