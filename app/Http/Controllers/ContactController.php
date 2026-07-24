@@ -7,9 +7,28 @@ use App\Models\ContactRequest;
 use App\Models\PageVisit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
+    /**
+     * Dispatch lead payload to SaaS Main Panel API (gazi-ustam)
+     */
+    private function sendToSaaSPanel(array $payload)
+    {
+        try {
+            $panelUrl = env('PANEL_API_URL', 'http://localhost/gazi-ustam/public/api/v1/website-leads');
+            $secretKey = env('PANEL_API_SECRET', 'gaziustam_secret_2026');
+
+            Http::timeout(5)
+                ->withHeaders(['X-Api-Secret' => $secretKey])
+                ->post($panelUrl, $payload);
+        } catch (\Throwable $e) {
+            Log::warning('SaaS Panel Lead Webhook Dispatch Failed: ' . $e->getMessage());
+        }
+    }
+
     /**
      * Helper to record page visits / traffic.
      */
@@ -59,6 +78,17 @@ class ContactController extends Controller
             'ip_address' => $request->ip(),
         ]);
 
+        // SaaS Ana Panele Bildir (gazi-ustam)
+        $this->sendToSaaSPanel([
+            'type' => 'contact',
+            'name' => $record->name,
+            'email' => $record->email,
+            'phone' => $record->phone,
+            'package_name' => $record->package_name,
+            'message' => $record->message,
+            'ip_address' => $record->ip_address,
+        ]);
+
         return response()->json([
             'success' => true,
             'message' => 'İletişim talebiniz veritabanına kaydedildi. En kısa sürede sizinle iletişime geçilecektir.',
@@ -86,6 +116,17 @@ class ContactController extends Controller
             'phone' => $validated['phone'],
             'package_name' => '14 Gün Ücretsiz Deneme',
             'ip_address' => $request->ip(),
+        ]);
+
+        // SaaS Ana Panele Bildir (gazi-ustam)
+        $this->sendToSaaSPanel([
+            'type' => 'trial',
+            'name' => $record->name,
+            'company_name' => $record->company_name,
+            'email' => $record->email,
+            'phone' => $record->phone,
+            'package_name' => $record->package_name,
+            'ip_address' => $record->ip_address,
         ]);
 
         return response()->json([
