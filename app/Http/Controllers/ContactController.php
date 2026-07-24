@@ -2,11 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\ContactRequest;
+use App\Models\PageVisit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ContactController extends Controller
 {
+    /**
+     * Helper to record page visits / traffic.
+     */
+    public static function recordVisit(Request $request)
+    {
+        try {
+            $agent = strtolower($request->header('User-Agent', ''));
+            $deviceType = 'Desktop';
+            if (str_contains($agent, 'mobile') || str_contains($agent, 'android') || str_contains($agent, 'iphone')) {
+                $deviceType = 'Mobile';
+            } elseif (str_contains($agent, 'ipad') || str_contains($agent, 'tablet')) {
+                $deviceType = 'Tablet';
+            }
+
+            PageVisit::create([
+                'ip_address' => $request->ip(),
+                'url' => $request->path() === '/' ? 'Ana Sayfa' : $request->path(),
+                'user_agent' => substr($request->header('User-Agent'), 0, 255),
+                'device_type' => $deviceType,
+                'referer' => substr($request->header('referer'), 0, 255),
+            ]);
+        } catch (\Throwable $e) {
+            // Ignore logging errors
+        }
+    }
+
     /**
      * Store contact or package inquiry request.
      */
@@ -67,7 +96,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Admin view to view all submitted leads & contact requests (Protected).
+     * Main Admin Dashboard (/admin)
      */
     public function index(Request $request)
     {
@@ -75,8 +104,36 @@ class ContactController extends Controller
             return redirect()->route('admin.login.form');
         }
 
+        // Current Admin User
+        $adminId = session('admin_id');
+        $admin = $adminId ? Admin::find($adminId) : Admin::first();
+        if (!$admin) {
+            $admin = Admin::create([
+                'name' => 'Sistem Yöneticisi',
+                'username' => 'admin',
+                'password' => Hash::make('gaziustam2026')
+            ]);
+        }
+
+        // Requests Data
         $requests = ContactRequest::latest()->get();
-        return view('admin.requests', compact('requests'));
+
+        // Traffic Analytics
+        $todayVisits = PageVisit::whereDate('created_at', now()->today())->count();
+        $totalVisits = PageVisit::count();
+        $uniqueIPs = PageVisit::distinct('ip_address')->count('ip_address');
+        $mobileVisits = PageVisit::where('device_type', 'Mobile')->count();
+        $recentVisits = PageVisit::latest()->take(20)->get();
+
+        return view('admin.requests', compact(
+            'requests',
+            'admin',
+            'todayVisits',
+            'totalVisits',
+            'uniqueIPs',
+            'mobileVisits',
+            'recentVisits'
+        ));
     }
 
     /**
@@ -85,14 +142,14 @@ class ContactController extends Controller
     public function showLoginForm()
     {
         if (session('admin_authenticated')) {
-            return redirect()->route('admin.talepler');
+            return redirect()->route('admin.dashboard');
         }
 
         return view('admin.login');
     }
 
     /**
-     * Process admin login.
+     * Process admin login using DB.
      */
     public function login(Request $request)
     {
@@ -101,15 +158,55 @@ class ContactController extends Controller
             'password' => 'required|string',
         ]);
 
-        $validUsername = env('ADMIN_USERNAME', 'admin');
-        $validPassword = env('ADMIN_PASSWORD', 'gaziustam2026');
+        $admin = Admin::where('username', $credentials['username'])->first();
 
-        if ($credentials['username'] === $validUsername && $credentials['password'] === $validPassword) {
-            session(['admin_authenticated' => true]);
-            return redirect()->route('admin.talepler')->with('success', 'Hoş geldiniz! Admin girişi sağlandı.');
+        if ($admin && Hash::check($credentials['password'], $admin->password)) {
+            session([
+                'admin_authenticated' => true,
+                'admin_id' => $admin->id,
+                'admin_username' => $admin->username
+            ]);
+            return redirect()->route('admin.dashboard')->with('success', 'Hoş geldiniz! Admin girişi sağlandı.');
         }
 
         return back()->withErrors(['error' => 'Kullanıcı adı veya şifre hatalı!']);
+    }
+
+    /**
+     * Update Admin Username & Password in Database.
+     */
+    public function updateProfile(Request $request)
+    {
+        if (!session('admin_authenticated')) {
+            return redirect()->route('admin.login.form');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'current_password' => 'required|string',
+            'new_password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        $adminId = session('admin_id');
+        $admin = $adminId ? Admin::find($adminId) : Admin::first();
+
+        if (!$admin || !Hash::check($validated['current_password'], $admin->password)) {
+            return back()->withErrors(['profile_error' => 'Mevcut şifreniz hatalı! Lütfen tekrar kontrol edin.']);
+        }
+
+        $admin->name = $validated['name'];
+        $admin->username = $validated['username'];
+
+        if (!empty($validated['new_password'])) {
+            $admin->password = Hash::make($validated['new_password']);
+        }
+
+        $admin->save();
+
+        session(['admin_username' => $admin->username]);
+
+        return back()->with('profile_success', 'Admin kullanıcı bilgileri ve şifreniz başarıyla güncellendi!');
     }
 
     /**
@@ -117,7 +214,7 @@ class ContactController extends Controller
      */
     public function logout(Request $request)
     {
-        session()->forget('admin_authenticated');
+        session()->forget(['admin_authenticated', 'admin_id', 'admin_username']);
         return redirect()->route('admin.login.form')->with('success', 'Admin oturumu kapatıldı.');
     }
 }
