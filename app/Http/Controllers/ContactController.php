@@ -18,7 +18,7 @@ class ContactController extends Controller
     private function sendToSaaSPanel(array $payload)
     {
         try {
-            $panelUrl = env('PANEL_API_URL', 'http://localhost/gazi-ustam/public/api/v1/website-leads');
+            $panelUrl = env('PANEL_API_URL', 'https://panel.gaziustam.com/api/v1/website-leads');
             $secretKey = env('PANEL_API_SECRET', 'gaziustam_secret_2026');
 
             Http::timeout(5)
