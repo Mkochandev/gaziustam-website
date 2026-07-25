@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gazi-grad-logo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="gazi-accent-logo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="glow-logo" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#059669" flood-opacity="0.35"/>
+    </filter>
+    <filter id="inner-shadow-logo">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="linear" slope="0.7"/>
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feOffset dx="0" dy="3"/>
+      <feComposite operator="out" in2="SourceAlpha" result="inverse"/>
+      <feFlood flood-color="#000000" flood-opacity="0.25" result="color"/>
+      <feComposite operator="in" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Background Rounded Shield Box -->
+  <rect x="16" y="16" width="480" height="480" rx="128" fill="url(#gazi-grad-logo)" filter="url(#glow-logo)" />
+  
+  <!-- Subtle Geometry Overlay / Construction Grid Pattern -->
+  <path d="M 128 64 L 384 64 A 64 64 0 0 1 448 128 L 448 384 A 64 64 0 0 1 384 448 L 128 448 A 64 64 0 0 1 64 384 L 64 128 A 64 64 0 0 1 128 64 Z" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="4"/>
+
+  <!-- Construction Roof / Badge Angle Ribbon at Top Right -->
+  <path d="M 320 120 L 390 120 L 390 190 Z" fill="url(#gazi-accent-logo)" opacity="0.9" />
+
+  <!-- Premium Crafted Letter 'G' with Construction / Usta Checkmark Flare -->
+  <path d="
+    M 368 184 
+    C 336 136 264 128 200 160 
+    C 128 196 112 304 168 368 
+    C 224 432 344 432 384 360 
+    C 400 330 404 290 404 260 
+    L 256 260 
+    L 256 312 
+    L 348 312 
+    C 344 344 316 372 272 372 
+    C 216 372 184 324 184 260 
+    C 184 196 224 176 272 176 
+    C 304 176 336 192 352 216 
+    Z" 
+    fill="#FFFFFF" 
+    filter="url(#inner-shadow-logo)" />
+
+  <!-- Dynamic Usta Accent Badge (Diamond/Star at center top of G) -->
+  <polygon points="256,92 268,116 292,116 272,130 280,154 256,140 232,154 240,130 220,116 244,116" fill="#FBBF24" opacity="0.95" />
+</svg>

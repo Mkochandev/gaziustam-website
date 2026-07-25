@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gazi Ustam - Admin Yönetim Paneli</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +32,7 @@
         <!-- Header -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-extrabold flex items-center justify-center text-lg shadow-sm">
-                    G
-                </div>
+                <img src="/images/logo.svg" alt="Gazi Ustam Logo" class="w-10 h-10 rounded-xl shadow-sm" />
                 <div>
                     <h1 class="text-2xl font-extrabold text-slate-900">Gazi Ustam - Admin Paneli</h1>
                     <p class="text-xs text-slate-500">Müşteri talepleri, site trafik istatistikleri ve yönetici ayarları.</p>

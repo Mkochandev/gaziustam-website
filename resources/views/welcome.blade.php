@@ -6,6 +6,11 @@
     <title>Gazi Ustam - Kurumsal Usta Takibi, Devam Puantaj & Gelir-Gider Finans Yazılımı</title>
     <meta name="description" content="Gazi Ustam ile şantiyenizdeki usta puantajlarını, günlük devam kayıtlarını, hakedişleri ve gelir-gider hesaplarını güvenle yönetin. 14 gün ücretsiz deneyin.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,10 +49,8 @@
     <header class="fixed top-0 left-0 right-0 z-40 corp-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-md font-extrabold text-lg">
-                    G
-                </div>
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="/images/logo.svg" alt="Gazi Ustam Logo" class="w-10 h-10 rounded-xl shadow-sm transform group-hover:scale-105 transition-transform duration-200" />
                 <div>
                     <span class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
                         Gazi Ustam
@@ -68,8 +71,9 @@
 
             <!-- Actions -->
             <div class="hidden sm:flex items-center gap-4">
-                <a href="#iletisim" class="text-sm font-semibold text-slate-700 hover:text-slate-900 px-3 py-2">
-                    Müşteri Girişi
+                <a href="https://panel.gaziustam.com/login" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-slate-700 hover:text-emerald-600 px-3 py-2 flex items-center gap-1.5 transition-colors">
+                    <span>Müşteri Girişi</span>
+                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
                 <button onclick="openTrialModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2">
                     <span>14 Gün Ücretsiz Deneyin</span>
@@ -90,10 +94,12 @@
             <a href="#paketler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-700">Üyelik Paketleri</a>
             <a href="#sss" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-700">SSS</a>
             <a href="#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-700">İletişim</a>
+            <a href="https://panel.gaziustam.com/login" target="_blank" rel="noopener noreferrer" class="block py-2 text-sm font-bold text-emerald-600">Müşteri Girişi (Panel)</a>
             <div class="pt-3 border-t border-slate-100">
                 <button onclick="openTrialModal(); toggleMobileMenu();" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl">14 Gün Ücretsiz Deneyin</button>
             </div>
         </div>
+
     </header>
 
     <main class="pt-28">
@@ -719,7 +725,7 @@
     <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 text-sm">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white font-bold flex items-center justify-center">G</div>
+                <img src="/images/logo.svg" alt="Gazi Ustam Logo" class="w-8 h-8 rounded-lg shadow-sm" />
                 <span class="font-bold text-white">Gazi Ustam © 2026</span>
                 <span class="text-xs text-slate-500">Tüm hakları saklıdır.</span>
             </div>
@@ -727,10 +733,10 @@
             <div class="flex items-center gap-6 text-xs font-medium">
                 <a href="#" class="hover:text-white">Gizlilik Politikası</a>
                 <a href="#" class="hover:text-white">Kullanım Koşulları</a>
-                <a href="/talepler" class="text-emerald-400 hover:underline">Gelen Talepler (Admin)</a>
             </div>
         </div>
     </footer>
+
 
     <!-- Free Trial Modal -->
     <div id="trial-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
