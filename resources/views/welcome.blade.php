@@ -29,35 +29,35 @@
     <!-- JSON-LD Structured Data for Google SERP -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@@context": "https://schema.org",
+      "@@graph": [
         {
-          "@type": "SoftwareApplication",
-          "@id": "https://gaziustam.com/#software",
+          "@@type": "SoftwareApplication",
+          "@@id": "https://gaziustam.com/#software",
           "name": "Gazi Ustam - Usta Takip Programı",
           "operatingSystem": "Web, iOS, Android",
           "applicationCategory": "BusinessApplication",
           "description": "Gazi Ustam; şantiyeler ve inşaat firmaları için geliştirilmiş usta takip programı, puantaj ve hakediş hesaplama yazılımıdır.",
           "offers": {
-            "@type": "Offer",
+            "@@type": "Offer",
             "price": "0",
             "priceCurrency": "TRY",
             "description": "14 Gün Ücretsiz Deneme"
           },
           "aggregateRating": {
-            "@type": "AggregateRating",
+            "@@type": "AggregateRating",
             "ratingValue": "4.9",
             "reviewCount": "142"
           }
         },
         {
-          "@type": "Organization",
-          "@id": "https://gaziustam.com/#organization",
+          "@@type": "Organization",
+          "@@id": "https://gaziustam.com/#organization",
           "name": "Gazi Ustam",
           "url": "https://gaziustam.com/",
           "logo": "https://gaziustam.com/images/logo.svg",
           "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+90-532-226-99-66",
             "contactType": "customer service",
             "areaServed": "TR",
@@ -65,30 +65,30 @@
           }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://gaziustam.com/#faq",
+          "@@type": "FAQPage",
+          "@@id": "https://gaziustam.com/#faq",
           "mainEntity": [
             {
-              "@type": "Question",
+              "@@type": "Question",
               "name": "14 Günlük Ücretsiz Denemede tüm usta takip özelliklerini kullanabilir miyim?",
               "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Evet! Gazi Ustam usta takip programında tüm özellikler ücretsiz deneme süresinde kısıtlamasız olarak açıktır. Usta ekleyebilir, puantaj girebilir ve hakediş raporlarınızı oluşturabilirsiniz."
               }
             },
             {
-              "@type": "Question",
+              "@@type": "Question",
               "name": "Yıllık ödeme indiriminden nasıl yararlanabilirim?",
               "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Üyelik paketlerinde 'Yıllık Ödeme' seçeneğini tercih ettiğinizde standart aylık 3.000 ₺ olan ücret, aylık 2.000 ₺'ye düşer."
               }
             },
             {
-              "@type": "Question",
+              "@@type": "Question",
               "name": "Firmamıza özel kişiselleştirme ve usta takip modülü eklenebiliyor mu?",
               "acceptedAnswer": {
-                "@type": "Answer",
+                "@@type": "Answer",
                 "text": "Evet, kurumsal paketlerimizde firmanızın şantiye süreçlerine özel modül geliştirme, özel alan ekleme ve marka kişiselleştirmesi yapıyoruz."
               }
             }
@@ -98,10 +98,11 @@
     }
     </script>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <!-- Favicon & Touch Icons for Google Search Engine Crawlers -->
+    <link rel="icon" href="https://gaziustam.com/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://gaziustam.com/favicon.ico" sizes="any">
+    <link rel="shortcut icon" href="https://gaziustam.com/favicon.ico">
+    <link rel="apple-touch-icon" href="https://gaziustam.com/favicon.svg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
