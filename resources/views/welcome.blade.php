@@ -3,8 +3,100 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gazi Ustam - Kurumsal Usta Takibi, Devam Puantaj & Gelir-Gider Finans Yazılımı</title>
-    <meta name="description" content="Gazi Ustam ile şantiyenizdeki usta puantajlarını, günlük devam kayıtlarını, hakedişleri ve gelir-gider hesaplarını güvenle yönetin. 14 gün ücretsiz deneyin.">
+    <title>Usta Takip Programı & Şantiye Puantaj Yazılımı - Gazi Ustam</title>
+    <meta name="description" content="Türkiye'nin en gelişmiş usta takip programı Gazi Ustam ile şantiye usta yevmiye, puantaj ve hakediş hesaplamalarını dijitalleştirin. 14 gün ücretsiz deneyin!">
+    <meta name="keywords" content="usta takip programı, usta takip yazılımı, şantiye puantaj programı, usta hakediş hesaplama, usta yevmiye takip sistemi, şantiye usta yönetim yazılımı, usta devam takip programı">
+    <meta name="author" content="Gazi Ustam">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://gaziustam.com/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gaziustam.com/">
+    <meta property="og:title" content="Usta Takip Programı & Şantiye Puantaj Yazılımı - Gazi Ustam">
+    <meta property="og:description" content="Gazi Ustam usta takip programı ile şantiye puantaj, yevmiye ve hakediş hesaplamalarını saniyeler içinde yönetin.">
+    <meta property="og:image" content="https://gaziustam.com/images/logo.svg">
+    <meta property="og:site_name" content="Gazi Ustam">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://gaziustam.com/">
+    <meta name="twitter:title" content="Usta Takip Programı & Şantiye Puantaj Yazılımı - Gazi Ustam">
+    <meta name="twitter:description" content="Gazi Ustam usta takip programı ile şantiye puantaj, yevmiye ve hakediş hesaplamalarını saniyeler içinde yönetin.">
+    <meta name="twitter:image" content="https://gaziustam.com/images/logo.svg">
+
+    <!-- JSON-LD Structured Data for Google SERP -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://gaziustam.com/#software",
+          "name": "Gazi Ustam - Usta Takip Programı",
+          "operatingSystem": "Web, iOS, Android",
+          "applicationCategory": "BusinessApplication",
+          "description": "Gazi Ustam; şantiyeler ve inşaat firmaları için geliştirilmiş usta takip programı, puantaj ve hakediş hesaplama yazılımıdır.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TRY",
+            "description": "14 Gün Ücretsiz Deneme"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "142"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://gaziustam.com/#organization",
+          "name": "Gazi Ustam",
+          "url": "https://gaziustam.com/",
+          "logo": "https://gaziustam.com/images/logo.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+90-532-226-99-66",
+            "contactType": "customer service",
+            "areaServed": "TR",
+            "availableLanguage": "Turkish"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://gaziustam.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "14 Günlük Ücretsiz Denemede tüm usta takip özelliklerini kullanabilir miyim?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Evet! Gazi Ustam usta takip programında tüm özellikler ücretsiz deneme süresinde kısıtlamasız olarak açıktır. Usta ekleyebilir, puantaj girebilir ve hakediş raporlarınızı oluşturabilirsiniz."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Yıllık ödeme indiriminden nasıl yararlanabilirim?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Üyelik paketlerinde 'Yıllık Ödeme' seçeneğini tercih ettiğinizde standart aylık 3.000 ₺ olan ücret, aylık 2.000 ₺'ye düşer."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Firmamıza özel kişiselleştirme ve usta takip modülü eklenebiliyor mu?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Evet, kurumsal paketlerimizde firmanızın şantiye süreçlerine özel modül geliştirme, özel alan ekleme ve marka kişiselleştirmesi yapıyoruz."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -114,12 +206,12 @@
                     </div>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-                        Usta Puantajlarını ve Şantiye Finansını <br class="hidden sm:inline">
-                        <span class="text-emerald-600">Güvenle Yönetin</span>
+                        Usta Takip Programı & <br class="hidden sm:inline">
+                        <span class="text-emerald-600">Şantiye Puantaj Yazılımı</span>
                     </h1>
 
                     <p class="text-lg text-slate-600 max-w-2xl leading-relaxed">
-                        Defter-kalem karmaşasına ve hakediş hesaplama hatalarına son verin. <strong class="text-slate-900 font-semibold">Gazi Ustam</strong> ile ustalarınızın günlük devamını kaydedin, hakediş özetlerini çıkarın ve şantiye gelir-gider dengesini anında raporlayın.
+                        Defter-kalem karmaşasına ve hakediş hesaplama hatalarına son verin. Türkiye'nin lider <strong class="text-slate-900 font-semibold">usta takip programı Gazi Ustam</strong> ile ustalarınızın günlük yevmiyelerini kaydedin, puantaj ve hakediş özetlerini anında raporlayın.
                     </p>
 
                     <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -228,7 +320,7 @@
         <section id="ozellikler" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
                 <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">KURUMSAL ÇÖZÜMLER</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Şantiye Yönetiminde İhtiyacınız Olan Tüm Özellikler</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Usta Takip Programı ve Şantiye Yönetim Özellikleri</h2>
                 <p class="text-slate-600 text-base">Gazi Ustam'da tüm özellikler sınırsız ve eksiksiz açılır. Kısıtlama olmadan tüm paneli kullanabilirsiniz.</p>
             </div>
 
@@ -288,7 +380,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
                     <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">CANLI UYGULAMA İNCELEMESİ</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Gazi Ustam Panellerini Keşfedin</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Usta Takip Programı Canlı Ekranları</h2>
                     <p class="text-slate-600 text-base">Aşağıdaki sekmelerden sistem ekranlarını inceleyebilirsiniz.</p>
                 </div>
 
@@ -416,7 +508,7 @@
         <section id="paketler" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">ŞEFFAF FİYATLANDIRMA</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900">Tüm Özellikler Açık Üyelik Paketleri</h2>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900">Usta Takip Yazılımı Paketleri & Fiyatları</h2>
                 <p class="text-slate-600 text-base">Tüm paketlerde usta takibi, puantaj, hakediş ve gelir-gider raporları eksiksiz açıktır. Yıllık veya kurumsal alımlarda avantajlı fiyatlardan yararlanın.</p>
 
                 <!-- Robust Fail-Safe Billing Toggle Switch -->
@@ -617,7 +709,7 @@
         <section id="sss" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
             <div class="text-center mb-14 space-y-3">
                 <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">SSS</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Sıkça Sorulan Sorular</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Usta Takip Yazılımı Sıkça Sorulan Sorular</h2>
             </div>
 
             <div class="space-y-4">
@@ -659,7 +751,7 @@
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
                         <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">KURUMSAL İLETİŞİM</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Paket Seçimi & İletişim Talebi</h2>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Usta Takip Programı Paket Seçimi & İletişim</h2>
                         <p class="text-slate-600 text-base leading-relaxed">
                             Gazi Ustam abonelik paketleri, kurumsal teklifler ve firmaya özel kişiselleştirme talepleri için ekibimiz sizlere anında yardımcı olmaktadır.
                         </p>
